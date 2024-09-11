@@ -1,10 +1,9 @@
 import { Titlebar, TitlebarColor } from "custom-electron-titlebar";
 import globalStyles from "./globalStyles";
 import { injectCSS } from "./utils";
-import { appConfig } from './config';
+import { appConfig } from "./config";
 
 window.addEventListener("DOMContentLoaded", () => {
-  console.log(appConfig.appName)
   new Titlebar({
     maximizable: true,
     closeable: true,
@@ -13,7 +12,9 @@ window.addEventListener("DOMContentLoaded", () => {
     titleHorizontalAlignment: "center",
   });
 
-  injectCSS(globalStyles);
+  setTimeout(() => {
+    injectCSS(globalStyles);
+  }, 100);
 
   // Binding for forward and backward history navigation
   document.addEventListener("keydown", (event) => {
@@ -33,7 +34,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const normalizeTitlebar = () => {
     setTimeout(() => {
       // Resent custom titlebar styles
-      const titlebarElem = document.querySelector<HTMLDivElement>(".cet-titlebar");
+      const titlebarElem =
+        document.querySelector<HTMLDivElement>(".cet-titlebar");
       if (titlebarElem) {
         titlebarElem.style.backgroundColor = "transparent";
         titlebarElem.style.color = "inherit";
