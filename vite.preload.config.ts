@@ -22,7 +22,7 @@ export default defineConfig((env) => {
         },
       },
     },
-    plugins: [pluginHotRestart('reload')],
+    plugins: [pluginHotRestart('restart')],
   };
 
   return mergeConfig(getBuildConfig(forgeEnv), config);
